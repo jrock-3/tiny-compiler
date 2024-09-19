@@ -1,10 +1,3 @@
----
-ucinetid: liaojy2
-studentid: 27081383
-course: cs142b
-project: warmup-2
----
-
 # How to Run
 1. Ensure you have rust installed
 ```bash
