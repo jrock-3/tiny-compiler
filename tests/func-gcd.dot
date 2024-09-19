@@ -1,0 +1,72 @@
+digraph G {
+	bb0 [shape=record, label="<b>BB0 | { 2: const #0 | 45: const #110 | 46: const #121 }"];
+
+
+	bb1 [shape=record, label="<b>BB1 | { 47: setpar1 (45) | 48: setpar2 (46) | 49: jsr 29 | 50: write (49) | 51: writeNL | 52: end }"];
+	bb0:b -> bb1:b [color=blue, style=dotted, label="dom"];
+
+
+	bb2 [shape=record, label="<b>BB2 | { 0: getpar1 | 1: getpar2 | 3: cmp (1) (2) | 9: bne (3) (53) }"];
+	bb2:s -> bb3:n [label="fall-through"];
+	bb2:s -> bb4:n [label="branch"];
+	bb0:b -> bb2:b [color=blue, style=dotted, label="dom"];
+
+
+	bb3 [shape=record, label="<b>BB3 | { 8: ret (0) }"];
+	bb2:b -> bb3:b [color=blue, style=dotted, label="dom"];
+
+
+	bb4 [shape=record, label="<b>BB4 | { 53: \<empty\> }"];
+	bb4:s -> bb5:n ;
+	bb2:b -> bb4:b [color=blue, style=dotted, label="dom"];
+
+
+	bb5 [shape=record, label="<b>BB5 | { 10: (x) phi (0) (15) | 14: cmp (10) (2) | 18: bge (14) (54) }"];
+	bb5:s -> bb6:n [label="fall-through"];
+	bb5:s -> bb7:n [label="branch"];
+	bb4:b -> bb5:b [color=blue, style=dotted, label="dom"];
+
+
+	bb6 [shape=record, label="<b>BB6 | { 15: add (10) (1) | 17: bra (10) }"];
+	bb6:s -> bb5:n ;
+	bb5:b -> bb6:b [color=blue, style=dotted, label="dom"];
+
+
+	bb7 [shape=record, label="<b>BB7 | { 54: \<empty\> }"];
+	bb7:s -> bb8:n ;
+	bb5:b -> bb7:b [color=blue, style=dotted, label="dom"];
+
+
+	bb8 [shape=record, label="<b>BB8 | { 19: (x) phi (10) (24) | 23: cmp (19) (1) | 27: blt (23) (28) }"];
+	bb8:s -> bb9:n [label="fall-through"];
+	bb8:s -> bb10:n [label="branch"];
+	bb7:b -> bb8:b [color=blue, style=dotted, label="dom"];
+
+
+	bb9 [shape=record, label="<b>BB9 | { 24: sub (19) (1) | 26: bra (19) }"];
+	bb9:s -> bb8:n ;
+	bb8:b -> bb9:b [color=blue, style=dotted, label="dom"];
+
+
+	bb10 [shape=record, label="<b>BB10 | { 28: ret (19) }"];
+	bb8:b -> bb10:b [color=blue, style=dotted, label="dom"];
+
+
+	bb11 [shape=record, label="<b>BB11 | { 29: getpar1 | 30: getpar2 | 31: cmp (29) (2) | 37: bne (31) (38) }"];
+	bb11:s -> bb12:n [label="fall-through"];
+	bb11:s -> bb13:n [label="branch"];
+	bb0:b -> bb11:b [color=blue, style=dotted, label="dom"];
+
+
+	bb12 [shape=record, label="<b>BB12 | { 36: ret (30) }"];
+	bb11:b -> bb12:b [color=blue, style=dotted, label="dom"];
+
+
+	bb13 [shape=record, label="<b>BB13 | { 38: setpar1 (29) | 39: setpar2 (30) | 40: jsr 0 | 41: setpar1 (30) | 42: setpar2 (40) | 43: jsr 29 | 44: ret (43) }"];
+	bb11:b -> bb13:b [color=blue, style=dotted, label="dom"];
+
+
+	bb0:s -> bb1:n
+	bb0:s -> bb2:n
+	bb0:s -> bb11:n
+}

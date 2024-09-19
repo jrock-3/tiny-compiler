@@ -1,0 +1,26 @@
+digraph G {
+	bb0 [shape=record, label="<b>BB0 | { 2: const #0 | 14: const #10 | 16: const #1 }"];
+
+
+	bb1 [shape=record, label="<b>BB1 | { 0: read }"];
+	bb1:s -> bb2:n ;
+	bb0:b -> bb1:b [color=blue, style=dotted, label="dom"];
+
+
+	bb2 [shape=record, label="<b>BB2 | { 10: (i) phi (0) (17) | 8: (y) phi (2) (19) | 6: (x) phi (2) (17) | 15: cmp (6) (14) | 24: bge (15) (25) }"];
+	bb2:s -> bb3:n [label="fall-through"];
+	bb2:s -> bb4:n [label="branch"];
+	bb1:b -> bb2:b [color=blue, style=dotted, label="dom"];
+
+
+	bb3 [shape=record, label="<b>BB3 | { 17: add (10) (16) | 19: add (0) (16) | 23: bra (10) }"];
+	bb3:s -> bb2:n ;
+	bb2:b -> bb3:b [color=blue, style=dotted, label="dom"];
+
+
+	bb4 [shape=record, label="<b>BB4 | { 25: write (6) | 26: write (8) | 27: write (10) | 28: write (0) | 29: end }"];
+	bb2:b -> bb4:b [color=blue, style=dotted, label="dom"];
+
+
+	bb0:s -> bb1:n
+}

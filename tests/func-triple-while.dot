@@ -1,0 +1,74 @@
+digraph G {
+	bb0 [shape=record, label="<b>BB0 | { 3: const #0 | 53: const #1 | 58: const #100 | 60: const #50 | 91: const #200 | 92: const #300 }"];
+
+
+	bb1 [shape=record, label="<b>BB1 | { 93: setpar1 (58) | 94: setpar2 (91) | 95: setpar3 (92) | 96: jsr 0 | 97: end }"];
+	bb0:b -> bb1:b [color=blue, style=dotted, label="dom"];
+
+
+	bb2 [shape=record, label="<b>BB2 | { 0: getpar1 | 1: getpar2 | 2: getpar3 }"];
+	bb2:s -> bb3:n ;
+	bb0:b -> bb2:b [color=blue, style=dotted, label="dom"];
+
+
+	bb3 [shape=record, label="<b>BB3 | { 18: (k) phi (3) (34) | 16: (j) phi (3) (32) | 14: (i) phi (3) (85) | 12: (count) phi (3) (28) | 20: cmp (14) (0) | 88: bge (20) (89) }"];
+	bb3:s -> bb4:n [label="fall-through"];
+	bb3:s -> bb13:n [label="branch"];
+	bb2:b -> bb3:b [color=blue, style=dotted, label="dom"];
+
+
+	bb4 [shape=record, label="<b>BB4 | { 98: \<empty\> }"];
+	bb4:s -> bb5:n ;
+	bb3:b -> bb4:b [color=blue, style=dotted, label="dom"];
+
+
+	bb5 [shape=record, label="<b>BB5 | { 34: (k) phi (18) (50) | 32: (j) phi (3) (81) | 28: (count) phi (12) (44) | 36: cmp (32) (1) | 84: bge (36) (85) }"];
+	bb5:s -> bb6:n [label="fall-through"];
+	bb5:s -> bb12:n [label="branch"];
+	bb4:b -> bb5:b [color=blue, style=dotted, label="dom"];
+
+
+	bb6 [shape=record, label="<b>BB6 | { 99: \<empty\> }"];
+	bb6:s -> bb7:n ;
+	bb5:b -> bb6:b [color=blue, style=dotted, label="dom"];
+
+
+	bb7 [shape=record, label="<b>BB7 | { 50: (k) phi (3) (54) | 44: (count) phi (28) (68) | 52: cmp (50) (2) | 80: bge (52) (81) }"];
+	bb7:s -> bb8:n [label="fall-through"];
+	bb7:s -> bb11:n [label="branch"];
+	bb6:b -> bb7:b [color=blue, style=dotted, label="dom"];
+
+
+	bb8 [shape=record, label="<b>BB8 | { 54: add (50) (53) | 56: add (14) (32) | 57: add (56) (54) | 59: div (57) (58) | 61: cmp (59) (60) | 78: bge (61) (68) }"];
+	bb8:s -> bb9:n [label="fall-through"];
+	bb8:s -> bb10:n [label="branch"];
+	bb7:b -> bb8:b [color=blue, style=dotted, label="dom"];
+
+
+	bb9 [shape=record, label="<b>BB9 | { 76: add (44) (53) }"];
+	bb9:s -> bb10:n ;
+	bb8:b -> bb9:b [color=blue, style=dotted, label="dom"];
+
+
+	bb10 [shape=record, label="<b>BB10 | { 68: (count) phi (76) (44) | 79: bra (50) }"];
+	bb10:s -> bb7:n ;
+	bb8:b -> bb10:b [color=blue, style=dotted, label="dom"];
+
+
+	bb11 [shape=record, label="<b>BB11 | { 81: add (32) (53) | 83: bra (34) }"];
+	bb11:s -> bb5:n ;
+	bb7:b -> bb11:b [color=blue, style=dotted, label="dom"];
+
+
+	bb12 [shape=record, label="<b>BB12 | { 85: add (14) (53) | 87: bra (18) }"];
+	bb12:s -> bb3:n ;
+	bb5:b -> bb12:b [color=blue, style=dotted, label="dom"];
+
+
+	bb13 [shape=record, label="<b>BB13 | { 89: write (12) | 90: ret }"];
+	bb3:b -> bb13:b [color=blue, style=dotted, label="dom"];
+
+
+	bb0:s -> bb1:n
+	bb0:s -> bb2:n
+}

@@ -1,0 +1,37 @@
+digraph G {
+	bb0 [shape=record, label="<b>BB0 | { 0: const #0 | 2: const #2 | 8: const #10 | 10: const #1 }"];
+
+
+	bb1 [shape=record, label="<b>BB1 | { 3: cmp (0) (2) | 17: bne (3) (4) }"];
+	bb1:s -> bb2:n [label="fall-through"];
+	bb1:s -> bb3:n [label="branch"];
+	bb0:b -> bb1:b [color=blue, style=dotted, label="dom"];
+
+
+	bb2 [shape=record, label="<b>BB2 | { 20: \<empty\> }"];
+	bb2:s -> bb4:n ;
+	bb1:b -> bb2:b [color=blue, style=dotted, label="dom"];
+
+
+	bb3 [shape=record, label="<b>BB3 | { 4: (i) phi (6) (0) | 18: write (4) | 19: end }"];
+	bb1:b -> bb3:b [color=blue, style=dotted, label="dom"];
+
+
+	bb4 [shape=record, label="<b>BB4 | { 6: (i) phi (0) (13) | 9: cmp (6) (8) | 16: bge (9) (21) }"];
+	bb4:s -> bb5:n [label="fall-through"];
+	bb4:s -> bb6:n [label="branch"];
+	bb2:b -> bb4:b [color=blue, style=dotted, label="dom"];
+
+
+	bb5 [shape=record, label="<b>BB5 | { 11: add (6) (10) | 13: add (11) (10) | 15: bra (6) }"];
+	bb5:s -> bb4:n ;
+	bb4:b -> bb5:b [color=blue, style=dotted, label="dom"];
+
+
+	bb6 [shape=record, label="<b>BB6 | { 21: \<empty\> }"];
+	bb6:s -> bb3:n ;
+	bb4:b -> bb6:b [color=blue, style=dotted, label="dom"];
+
+
+	bb0:s -> bb1:n
+}

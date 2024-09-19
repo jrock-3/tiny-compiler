@@ -1,0 +1,90 @@
+digraph G {
+	bb0 [shape=record, label="<b>BB0 | { 8: const #0 | 13: const #10 | 16: const #1 | 20: const #111 | 23: const #5 | 41: const #15 | 53: const #20 }"];
+
+
+	bb1 [shape=record, label="<b>BB1 | { 0: read | 2: read }"];
+	bb1:s -> bb2:n ;
+	bb0:b -> bb1:b [color=blue, style=dotted, label="dom"];
+
+
+	bb2 [shape=record, label="<b>BB2 | { 11: (m) phi (8) (31) | 9: (j) phi (8) (29) | 6: (k) phi (2) (27) | 4: (x) phi (0) (18) | 14: cmp (4) (13) | 89: bge (14) (90) }"];
+	bb2:s -> bb3:n [label="fall-through"];
+	bb2:s -> bb16:n [label="branch"];
+	bb1:b -> bb2:b [color=blue, style=dotted, label="dom"];
+
+
+	bb3 [shape=record, label="<b>BB3 | { 18: add (4) (16) | 21: write (20) | 22: writeNL | 24: cmp (6) (23) | 67: ble (24) (96) }"];
+	bb3:s -> bb4:n [label="fall-through"];
+	bb3:s -> bb12:n [label="branch"];
+	bb2:b -> bb3:b [color=blue, style=dotted, label="dom"];
+
+
+	bb4 [shape=record, label="<b>BB4 | { 95: \<empty\> }"];
+	bb4:s -> bb6:n ;
+	bb3:b -> bb4:b [color=blue, style=dotted, label="dom"];
+
+
+	bb5 [shape=record, label="<b>BB5 | { 31: (m) phi (39) (75) | 29: (j) phi (37) (8) | 27: (k) phi (63) (82) | 86: write (27) | 87: writeNL | 88: bra (11) }"];
+	bb5:s -> bb2:n ;
+	bb3:b -> bb5:b [color=blue, style=dotted, label="dom"];
+
+
+	bb6 [shape=record, label="<b>BB6 | { 39: (m) phi (16) (51) | 37: (j) phi (8) (43) | 35: (k) phi (6) (47) | 42: cmp (37) (41) | 62: bge (42) (63) }"];
+	bb6:s -> bb7:n [label="fall-through"];
+	bb6:s -> bb11:n [label="branch"];
+	bb4:b -> bb6:b [color=blue, style=dotted, label="dom"];
+
+
+	bb7 [shape=record, label="<b>BB7 | { 43: add (37) (35) }"];
+	bb7:s -> bb8:n ;
+	bb6:b -> bb7:b [color=blue, style=dotted, label="dom"];
+
+
+	bb8 [shape=record, label="<b>BB8 | { 51: (m) phi (39) (57) | 47: (k) phi (35) (55) | 54: cmp (51) (53) | 60: bge (54) (61) }"];
+	bb8:s -> bb9:n [label="fall-through"];
+	bb8:s -> bb10:n [label="branch"];
+	bb7:b -> bb8:b [color=blue, style=dotted, label="dom"];
+
+
+	bb9 [shape=record, label="<b>BB9 | { 55: mul (47) (16) | 57: add (51) (16) | 59: bra (51) }"];
+	bb9:s -> bb8:n ;
+	bb8:b -> bb9:b [color=blue, style=dotted, label="dom"];
+
+
+	bb10 [shape=record, label="<b>BB10 | { 61: bra (39) }"];
+	bb10:s -> bb6:n ;
+	bb8:b -> bb10:b [color=blue, style=dotted, label="dom"];
+
+
+	bb11 [shape=record, label="<b>BB11 | { 63: sub (35) (16) | 65: write (63) | 66: writeNL | 68: bra (31) }"];
+	bb11:s -> bb5:n ;
+	bb6:b -> bb11:b [color=blue, style=dotted, label="dom"];
+
+
+	bb12 [shape=record, label="<b>BB12 | { 96: \<empty\> }"];
+	bb12:s -> bb13:n ;
+	bb3:b -> bb12:b [color=blue, style=dotted, label="dom"];
+
+
+	bb13 [shape=record, label="<b>BB13 | { 75: (m) phi (16) (78) | 77: cmp (75) (53) | 81: bge (77) (82) }"];
+	bb13:s -> bb14:n [label="fall-through"];
+	bb13:s -> bb15:n [label="branch"];
+	bb12:b -> bb13:b [color=blue, style=dotted, label="dom"];
+
+
+	bb14 [shape=record, label="<b>BB14 | { 78: add (75) (6) | 80: bra (75) }"];
+	bb14:s -> bb13:n ;
+	bb13:b -> bb14:b [color=blue, style=dotted, label="dom"];
+
+
+	bb15 [shape=record, label="<b>BB15 | { 82: add (6) (16) | 84: write (82) | 85: writeNL }"];
+	bb15:s -> bb5:n ;
+	bb13:b -> bb15:b [color=blue, style=dotted, label="dom"];
+
+
+	bb16 [shape=record, label="<b>BB16 | { 90: write (4) | 91: writeNL | 92: write (6) | 93: writeNL | 94: end }"];
+	bb2:b -> bb16:b [color=blue, style=dotted, label="dom"];
+
+
+	bb0:s -> bb1:n
+}

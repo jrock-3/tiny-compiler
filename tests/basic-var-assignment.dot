@@ -1,0 +1,10 @@
+digraph G {
+	bb0 [shape=record, label="<b>BB0 | { 0: const #10 }"];
+
+
+	bb1 [shape=record, label="<b>BB1 | { 2: end }"];
+	bb0:b -> bb1:b [color=blue, style=dotted, label="dom"];
+
+
+	bb0:s -> bb1:n
+}

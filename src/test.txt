@@ -1,0 +1,416 @@
+[src/parser.rs:815] &parser = Parser {
+    tokenizer: Tokenizer {
+        input: Input {
+            input: [],
+            curr: None,
+        },
+        curr: None,
+        idents: [
+            "InputNum",
+            "OutputNum",
+            "OutputNewLine",
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+        ],
+    },
+    const_map: {
+        0: 8,
+        1: 15,
+    },
+    block_state: BlockState {
+        curr: 3,
+        stack: [],
+    },
+    blocks: BlockList {
+        blocks: [
+            Block {
+                id: 0,
+                dom: None,
+                insts: [
+                    8,
+                    15,
+                ],
+                next: (
+                    Some(
+                        1,
+                    ),
+                    None,
+                ),
+                var_map: {},
+                op_map: {},
+                phis: {},
+            },
+            Block {
+                id: 1,
+                dom: Some(
+                    0,
+                ),
+                insts: [
+                    0,
+                    4,
+                    6,
+                    9,
+                    13,
+                ],
+                next: (
+                    Some(
+                        3,
+                    ),
+                    Some(
+                        2,
+                    ),
+                ),
+                var_map: {
+                    3: Some(
+                        0,
+                    ),
+                    4: Some(
+                        0,
+                    ),
+                    5: Some(
+                        0,
+                    ),
+                    6: Some(
+                        4,
+                    ),
+                    7: Some(
+                        6,
+                    ),
+                },
+                op_map: {
+                    Add: 6,
+                },
+                phis: {},
+            },
+            Block {
+                id: 2,
+                dom: Some(
+                    1,
+                ),
+                insts: [
+                    10,
+                    14,
+                ],
+                next: (
+                    None,
+                    Some(
+                        3,
+                    ),
+                ),
+                var_map: {
+                    3: Some(
+                        10,
+                    ),
+                    4: Some(
+                        0,
+                    ),
+                    5: Some(
+                        0,
+                    ),
+                    6: Some(
+                        4,
+                    ),
+                    7: Some(
+                        6,
+                    ),
+                },
+                op_map: {
+                    Add: 10,
+                },
+                phis: {},
+            },
+            Block {
+                id: 3,
+                dom: Some(
+                    1,
+                ),
+                insts: [
+                    19,
+                    20,
+                    21,
+                ],
+                next: (
+                    None,
+                    None,
+                ),
+                var_map: {
+                    3: Some(
+                        0,
+                    ),
+                    4: Some(
+                        0,
+                    ),
+                    5: Some(
+                        0,
+                    ),
+                    6: Some(
+                        4,
+                    ),
+                    7: Some(
+                        6,
+                    ),
+                },
+                op_map: {
+                    Add: 6,
+                },
+                phis: {},
+            },
+            Block {
+                id: 4,
+                dom: Some(
+                    1,
+                ),
+                insts: [
+                    16,
+                ],
+                next: (
+                    None,
+                    Some(
+                        2,
+                    ),
+                ),
+                var_map: {
+                    3: Some(
+                        0,
+                    ),
+                    4: Some(
+                        0,
+                    ),
+                    5: Some(
+                        0,
+                    ),
+                    6: Some(
+                        16,
+                    ),
+                    7: Some(
+                        6,
+                    ),
+                },
+                op_map: {
+                    Add: 16,
+                },
+                phis: {},
+            },
+        ],
+        block_count: 5,
+    },
+    insts: InstList {
+        instructions: [
+            Inst {
+                id: 0,
+                itype: Read,
+                dom: None,
+            },
+            Inst {
+                id: 1,
+                itype: Assignment,
+                dom: None,
+            },
+            Inst {
+                id: 2,
+                itype: Assignment,
+                dom: None,
+            },
+            Inst {
+                id: 3,
+                itype: Assignment,
+                dom: None,
+            },
+            Inst {
+                id: 4,
+                itype: Add {
+                    inst1: (
+                        0,
+                        Some(
+                            4,
+                        ),
+                    ),
+                    inst2: (
+                        0,
+                        Some(
+                            5,
+                        ),
+                    ),
+                },
+                dom: None,
+            },
+            Inst {
+                id: 5,
+                itype: Assignment,
+                dom: None,
+            },
+            Inst {
+                id: 6,
+                itype: Add {
+                    inst1: (
+                        0,
+                        Some(
+                            3,
+                        ),
+                    ),
+                    inst2: (
+                        0,
+                        Some(
+                            4,
+                        ),
+                    ),
+                },
+                dom: Some(
+                    4,
+                ),
+            },
+            Inst {
+                id: 7,
+                itype: Assignment,
+                dom: None,
+            },
+            Inst {
+                id: 8,
+                itype: Const(
+                    0,
+                ),
+                dom: None,
+            },
+            Inst {
+                id: 9,
+                itype: Cmp {
+                    inst1: (
+                        0,
+                        Some(
+                            3,
+                        ),
+                    ),
+                    inst2: (
+                        8,
+                        None,
+                    ),
+                },
+                dom: None,
+            },
+            Inst {
+                id: 10,
+                itype: Add {
+                    inst1: (
+                        4,
+                        Some(
+                            6,
+                        ),
+                    ),
+                    inst2: (
+                        6,
+                        Some(
+                            7,
+                        ),
+                    ),
+                },
+                dom: Some(
+                    6,
+                ),
+            },
+            Inst {
+                id: 11,
+                itype: Phi {
+                    inst1: 10,
+                    inst2: 0,
+                },
+                dom: None,
+            },
+            Inst {
+                id: 12,
+                itype: Assignment,
+                dom: None,
+            },
+            Inst {
+                id: 13,
+                itype: Bge {
+                    inst: (
+                        9,
+                        None,
+                    ),
+                    block: Some(
+                        4,
+                    ),
+                },
+                dom: None,
+            },
+            Inst {
+                id: 14,
+                itype: Bra {
+                    block: 3,
+                },
+                dom: None,
+            },
+            Inst {
+                id: 15,
+                itype: Const(
+                    1,
+                ),
+                dom: None,
+            },
+            Inst {
+                id: 16,
+                itype: Add {
+                    inst1: (
+                        6,
+                        Some(
+                            7,
+                        ),
+                    ),
+                    inst2: (
+                        15,
+                        None,
+                    ),
+                },
+                dom: Some(
+                    6,
+                ),
+            },
+            Inst {
+                id: 17,
+                itype: Phi {
+                    inst1: 4,
+                    inst2: 16,
+                },
+                dom: None,
+            },
+            Inst {
+                id: 18,
+                itype: Assignment,
+                dom: None,
+            },
+            Inst {
+                id: 19,
+                itype: Write {
+                    inst: (
+                        0,
+                        Some(
+                            3,
+                        ),
+                    ),
+                },
+                dom: None,
+            },
+            Inst {
+                id: 20,
+                itype: Write {
+                    inst: (
+                        4,
+                        Some(
+                            6,
+                        ),
+                    ),
+                },
+                dom: None,
+            },
+            Inst {
+                id: 21,
+                itype: End,
+                dom: None,
+            },
+        ],
+        inst_count: 22,
+    },
+}

@@ -1,0 +1,49 @@
+main
+
+var a, b, c, d; {
+
+    let a <- call InputNum();
+
+    let b <- call InputNum();
+
+    let c <- call InputNum();
+
+    let d <- b;
+
+    
+
+    while a < 100 do 
+
+        let a <- b + 1;
+
+        let d <- d + 1;
+
+        if d < 0 then 
+
+            let b <- b + 1;
+
+            while c < 10 do
+
+                let c <- c + 1;
+
+            od;
+
+            let d <- b + 3;
+
+        else
+
+            let b <- b + 1;
+
+            while c < 10 do
+
+                let c <- c + 1;
+
+            od;
+
+            let d <- b + 3;
+
+        fi;
+
+    od;
+
+}.
